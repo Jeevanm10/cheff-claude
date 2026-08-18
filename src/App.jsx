@@ -4,8 +4,8 @@ import Main from "./components/main";
 export default function app(){
   return(
     <>
-    <Header/>
-    <Main/>
+      <Header/>
+      <Main/>
     </>
   )
 }
