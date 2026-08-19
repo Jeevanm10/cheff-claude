@@ -30,7 +30,7 @@ main{
     display: flex;
     justify-content: center;
     gap: 10px;
-    height: 30px;
+    /* height: 30px; */
 }
 .add-ingrediant > input{
     border-radius: 6px;
@@ -46,4 +46,78 @@ main{
     color: white;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.1;
+    padding: 0px 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.ingrediants-list{
+    margin-bottom: 48px;
+}
+.ingrediants-list > li{
+    color: #475467;
+    line-break: 28px;
+}
+
+.get-recipe-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #F0EFEB;
+    padding:10px 20px;
+}
+.get-recipe-container h3{
+    font-size: 1.125rem;
+    line-height: 15px;
+}
+.get-recipe-container p{
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 15px;
+}
+.get-recipe-container button{
+    background-color: #D17557;
+    border:none;
+    border-radius: 6px;
+    color:#fafaf8;
+    padding: 9px 15px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    font-size: 0.875rem;
+    cursor: pointer;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media (max-width:600px) {
+    .get-recipe-container{
+        flex-direction: column;
+    }
+    .add-ingrediant{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .add-ingrediant > button{
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.1;
+        padding: 0px 15px;
+        min-width: 150px;
+        max-width: 400px;
+        height: 30px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
+
+.suggested-recipe-container{
+    color: #475467;
+    line-height: 28px;
+    font-size: 1.125rem;
+    font-weight: 400px;
+}
+.suggested-recipe-container ul li, .suggested-recipe-container ol li{
+    margin-bottom: 8px;
 }
