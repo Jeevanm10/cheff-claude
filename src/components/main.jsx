@@ -1,11 +1,12 @@
 import React from "react";
 import IngrediantList from "./ingrediantList";
 import ClaudeRecipe from "./claudeRecipe"
+import { getRecipeFromGemini } from"./ai"
 
 
 export default function main() {
     const [ingrediants,setItem] = React.useState([])
-    const [recipeShown,setRecipeShown] = React.useState(false)
+    const [recipe,setRecipe] = React.useState("")
     
     const listItems = ingrediants.map(item =>(
         <li key ={item}>{item}</li>
@@ -16,8 +17,10 @@ export default function main() {
         setItem(prev => [...prev,newFormData])
     }
 
-    function showRecipe() {
-        setRecipeShown(prev => !prev)
+    async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromGemini(ingrediants)
+        console.log(recipeMarkdown)
+        setRecipe(recipeMarkdown)
     }
 
     return(
@@ -26,8 +29,8 @@ export default function main() {
                 <input placeholder="e.g Carrot" type = "text" aria-label="Add ingrediant" name="ingrediants"/>
                 <button>+ Add ingrediant</button>
             </form>
-            {ingrediants.length > 0 && <IngrediantList list = {listItems} showRecipe ={showRecipe}/>}
-            {recipeShown && <ClaudeRecipe canShow = {recipeShown}/>}  
+            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe}/>}
+            {recipe && <ClaudeRecipe recipe={recipe}/>}  
         </main>
     )
 }

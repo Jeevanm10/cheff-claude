@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "^2.17.1",
+    "dotenv": "^17.4.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-markdown": "^8.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
