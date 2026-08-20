@@ -19,7 +19,6 @@ export default function main() {
 
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromGemini(ingrediants)
-        console.log(recipeMarkdown)
         setRecipe(recipeMarkdown)
     }
 
