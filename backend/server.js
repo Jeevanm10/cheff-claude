@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import rateLimit from "express-rate-limit"; // 1. Added import
 import { GoogleGenAI } from "@google/genai";
 
+
 dotenv.config();
 
 const app = express();
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "http://localhost:5173", // Local development (Vite)
   "http://localhost:3000", // Local development (Create React App)
-  "https://your-chef-claude-frontend.vercel.app", // Your deployed frontend URL
+  "https://chef-claude-frontend.vercel.app", // Your deployed frontend URL
 ];
 
 app.use(
@@ -42,8 +43,7 @@ const recipeLimiter = rateLimit({
   },
 });
 
-// Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.VITE_GEMINI_API_KEY });
 
 const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional basic pantry staples (like salt, pepper, oil, water, flour). Format your response in clear, clean Markdown for easy rendering on the web.
@@ -76,7 +76,7 @@ app.post("/api/recipe", recipeLimiter, async (req, res) => {
   }
 });
 
-// Start server
+
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(`Chef Claude backend listening on http://localhost:${PORT}`);

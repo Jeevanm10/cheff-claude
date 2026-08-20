@@ -1,7 +1,7 @@
 import React from "react";
 import IngrediantList from "./ingrediantList";
 import ClaudeRecipe from "./claudeRecipe"
-import { getRecipeFromGemini } from"./ai"
+import { getRecipeFromChefClaude } from"./ai"
 
 
 export default function main() {
@@ -18,7 +18,7 @@ export default function main() {
     }
 
     async function getRecipe() {
-        const recipeMarkdown = await getRecipeFromGemini(ingrediants)
+        const recipeMarkdown = await getRecipeFromChefClaude(ingrediants)
         setRecipe(recipeMarkdown)
     }
 
