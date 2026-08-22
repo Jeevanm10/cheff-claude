@@ -5,6 +5,7 @@ import { getRecipeFromGemini } from"./ai"
 
 
 export default function main() {
+    const add = "+ Add ingrediant"
     const [ingrediants,setItem] = React.useState([])
     const [recipe,setRecipe] = React.useState("")
     
@@ -26,7 +27,7 @@ export default function main() {
         <main>
             <form className="add-ingrediant" action={handleSubmit}>
                 <input placeholder="e.g Carrot" type = "text" aria-label="Add ingrediant" name="ingrediants"/>
-                <button>+ Add ingrediant</button>
+                <button>{add}</button>
             </form>
             {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe}/>}
             {recipe && <ClaudeRecipe recipe={recipe}/>}  
