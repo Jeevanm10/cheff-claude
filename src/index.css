@@ -47,7 +47,7 @@ main{
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.1;
+    font-size: 0.1rem;
     padding: 0px 15px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
