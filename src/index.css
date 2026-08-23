@@ -118,3 +118,7 @@ main{
 .suggested-recipe-container ul li, .suggested-recipe-container ol li{
     margin-bottom: 8px;
 }
+.imp-note{
+    color: #dc2323;
+    text-align: center;
+}

@@ -1,11 +1,10 @@
 import React from "react";
 import IngrediantList from "./ingrediantList";
 import ClaudeRecipe from "./claudeRecipe"
-import { getRecipeFromGemini } from"./ai"
+import { getRecipeFromMistral } from"./ai"
 
 
 export default function main() {
-    const add = "+ Add ingrediant"
     const [ingrediants,setItem] = React.useState([])
     const [recipe,setRecipe] = React.useState("")
     
@@ -19,7 +18,7 @@ export default function main() {
     }
 
     async function getRecipe() {
-        const recipeMarkdown = await getRecipeFromGemini(ingrediants)
+        const recipeMarkdown = await getRecipeFromMistral(ingrediants)
         setRecipe(recipeMarkdown)
     }
 
@@ -27,9 +26,10 @@ export default function main() {
         <main>
             <form className="add-ingrediant" action={handleSubmit}>
                 <input placeholder="e.g Carrot" type = "text" aria-label="Add ingrediant" name="ingrediants"/>
-                <button>{add}</button>
+                <button>+ Add ingrediant</button>
             </form>
-            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe}/>}
+            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} />}
+            <p className="imp-note">Note : wait a minute after clicking the "Get a recipe" button</p>
             {recipe && <ClaudeRecipe recipe={recipe}/>}  
         </main>
     )
