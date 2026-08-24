@@ -22,7 +22,7 @@ export async function getRecipeFromMistral(ingredientsArr) {
             ],
             max_tokens: 1024,
         })
-        const cleanedResponse = response.choices[0].message.content.replace(/<think>[\s\S]*?<\/think>/g,"").trim()
+        const cleanedResponse = response.choices[0].message.content.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi,"").trim()
         return cleanedResponse
     } catch (err) {
         console.error(err.message)

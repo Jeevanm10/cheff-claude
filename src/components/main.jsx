@@ -28,8 +28,8 @@ export default function main() {
                 <input placeholder="e.g Carrot" type = "text" aria-label="Add ingrediant" name="ingrediants"/>
                 <button>+ Add ingrediant</button>
             </form>
-            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} />}
             <p className="imp-note">Note : wait a minute after clicking the "Get a recipe" button</p>
+            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} />}
             {recipe && <ClaudeRecipe recipe={recipe}/>}  
         </main>
     )
