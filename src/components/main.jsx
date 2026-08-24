@@ -2,11 +2,19 @@ import React from "react";
 import IngrediantList from "./ingrediantList";
 import ClaudeRecipe from "./claudeRecipe"
 import { getRecipeFromMistral } from"./ai"
+import { Behavior } from "@google/genai";
 
 
 export default function main() {
     const [ingrediants,setItem] = React.useState([])
     const [recipe,setRecipe] = React.useState("")
+    const recipeSection = React.useRef(null)
+    
+    React.useEffect(()=>{
+        if (recipe != "" && recipeSection.current != null) {
+            recipeSection.current.scrollIntoView({behavior : "smooth"})
+        }
+    },[recipe])
     
     const listItems = ingrediants.map(item =>(
         <li key ={item}>{item}</li>
@@ -29,7 +37,7 @@ export default function main() {
                 <button>+ Add ingrediant</button>
             </form>
             <p className="imp-note">Note : wait a minute after clicking the "Get a recipe" button</p>
-            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} />}
+            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} ref = {recipeSection} />}
             {recipe && <ClaudeRecipe recipe={recipe}/>}  
         </main>
     )
