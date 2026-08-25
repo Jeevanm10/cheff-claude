@@ -12,7 +12,7 @@ export default function ingrediantList(props){
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from the list of your ingrediants</p>
                     </div>
-                    <button onClick={props.getRecipe}>Get a recipe</button>
+                    <button onClick={props.getRecipe}>{props.loading ? "Getting..." : "Get a recipe"}</button>
                 </div>}
             </section>
     )

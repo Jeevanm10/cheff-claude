@@ -19,15 +19,19 @@ export default function main() {
     const listItems = ingrediants.map(item =>(
         <li key ={item}>{item}</li>
     ))
+    const [loading,setLoading] = React.useState(false)
 
     function handleSubmit(formData){
         const newFormData = formData.get("ingrediants")
         setItem(prev => [...prev,newFormData])
+    
     }
 
-    async function getRecipe() {
+     async function getRecipe() {
+        setLoading(true)
         const recipeMarkdown = await getRecipeFromMistral(ingrediants)
         setRecipe(recipeMarkdown)
+        setLoading(false)
     }
 
     return(
@@ -37,7 +41,7 @@ export default function main() {
                 <button>+ Add ingrediant</button>
             </form>
             <p className="imp-note">Note : wait a minute after clicking the "Get a recipe" button</p>
-            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} ref = {recipeSection} />}
+            {ingrediants.length > 0 && <IngrediantList list = {listItems} getRecipe ={getRecipe} ref = {recipeSection} loading = {loading} />}
             {recipe && <ClaudeRecipe recipe={recipe}/>}  
         </main>
     )
