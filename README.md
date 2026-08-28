@@ -1,1 +1,2 @@
+# Cheff claude
 This is an recipe generator ai devoleped using react and hugging face api. This ai generates the recipe of the given ingrediants. Ingrediants can be given by the user. Live link : : https://cheff-claude.vercel.app/
